@@ -1,24 +1,36 @@
----
-version: 2
+# Use the latest 2.1 version of CircleCI pipeline process engine.
+# See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
+
+# Define a job to be invoked later in a workflow.
+# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   build:
-    working_directory: ~/your-app-name
+    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+    working_directory: ~/app-next-cloud
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: cimg/ruby:3.1.1-node
         environment:
           PGHOST: localhost
-          PGUSER: your-app-name
+          PGUSER: postgres
           RAILS_ENV: test
-      - image: postgres:9.5
+      - image: postgres:14.2
         environment:
           POSTGRES_USER: postgres
           POSTGRES_DB: app_cloud_next_test
-          POSTGRES_PASSWORD: ""
+          POSTGRES_PASSWORD: "postgres"
+    # Add steps to the job
+    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
-        - checkout
-
-      # Setup the database
+      - checkout
+      - run: bundle install
       - run: bundle exec rake db:setup
+      - run: bundle exec rspec
 
-      # Run the tests
-      - run: bundle exec rake
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
+workflows:
+  build-workflow:
+    jobs:
+      - build
