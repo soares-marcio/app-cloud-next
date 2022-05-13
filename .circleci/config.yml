@@ -1,0 +1,24 @@
+---
+version: 2
+jobs:
+  build:
+    working_directory: ~/your-app-name
+    docker:
+      - image: circleci/ruby:2.4.1
+        environment:
+          PGHOST: localhost
+          PGUSER: your-app-name
+          RAILS_ENV: test
+      - image: postgres:9.5
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: app_cloud_next_test
+          POSTGRES_PASSWORD: ""
+    steps:
+        - checkout
+
+      # Setup the database
+      - run: bundle exec rake db:setup
+
+      # Run the tests
+      - run: bundle exec rake

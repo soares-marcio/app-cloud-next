@@ -38,3 +38,4 @@ production:
   database: app_cloud_next_production
   username: app_cloud_next
   password: <%= ENV["APP_CLOUD_NEXT_DATABASE_PASSWORD"] %>
+  host: <%= ENV['DATABASE_URL'] %>

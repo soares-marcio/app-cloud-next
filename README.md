@@ -1,24 +1,26 @@
 # README
+[![CircleCI](https://circleci.com/gh/biodevs/app-cloud-next/tree/main.svg?style=svg)](https://circleci.com/gh/biodevs/app-cloud-next/tree/main)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+*Trabalho  Academico*
 
-Things you may want to cover:
+Instituicao: **FIAP**
 
-* Ruby version
+Materia: **CLOUD ARCHITECTURE & DEVOPS**
 
-* System dependencies
+Professor: **JOSÉ CASTILLO LEMA**
 
-* Configuration
+Escopo do projeto
+Aplicando os conceitos das aulas
+que inclua o uso de:
+ - Frontend (web)
+ - Nó de armazenamento (herokuapp)
+ - Interface REST
+ - Ferramentas devops/integração contínua (circleci)
 
-* Database creation
+Pagina apresenta uma **lista** de usuarios cadastrados , com opçao de **adicionar** o novo contato, **editar** algum usuario cadastrado ou **excluir** um usuario.
 
-* Database initialization
+Para ver a aplicação [acesse aqui](https://app-cloud-next.herokuapp.com)
 
-* How to run the test suite
+Integrantes do grupo:
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+*Daianne Gomes Aguiar, Leonardo Andrade Desiderio Tofoli, Marcio Soares.*
