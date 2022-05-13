@@ -1,4 +1,4 @@
-<p style="color: green"><%= notice %></p>
+<div class="<%=notice ? 'alert alert-success': ''%>" role="alert"><%= notice %></div>
 
 <%= link_to "Novo usuário", new_user_path %>
 <table class="table">
@@ -8,6 +8,7 @@
       <th scope="col">Nome</th>
       <th scope="col">Username</th>
       <th scope="col">E-mail</th>
+      <th scope="col">Criado em</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -18,9 +19,11 @@
         <td><%= user.name %></td>
         <td><%= user.username %></td>
         <td><%= user.email %></td>
-        <td><%= link_to "Editar", edit_user_path(user) %></td>
-        <td><%= button_to "Deletar", user, method: :delete %></td>
+        <td><%= user.created_at.try(:strftime, '%d/%m/%y %H:%M:%S') %></td>
+        <td><%= link_to "Editar", edit_user_path(user) %> | <%= button_to "Deletar", user, method: :delete %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @users, window: 2 %>
