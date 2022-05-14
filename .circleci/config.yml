@@ -10,7 +10,7 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     working_directory: ~/app-next-cloud
     docker:
-      - image: cimg/ruby:2.7.5
+      - image: cimg/ruby:3.1.1
         environment:
           PGHOST: localhost
           PGUSER: postgres
